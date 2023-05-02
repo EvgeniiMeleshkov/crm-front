@@ -1,0 +1,33 @@
+button {
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  font-size: var(--l);
+}
+
+button.btn-blue {
+  background-color: var(--rambler-blue);
+}
+
+button.btn-orange {
+  background-color: var(--dark-carbone);
+}
+
+button:disabled {
+  cursor: pointer;
+  background-color: var(--light-carbone);
+  color: var(--cloud-gray);
+}
+
+button.btn-blue:hover {
+  background-color: var(--dark-blue)
+}
+
+button.btn-header {
+  background-color: transparent;
+  width: auto;
+  margin: 0 10px 0 10px ;
+}

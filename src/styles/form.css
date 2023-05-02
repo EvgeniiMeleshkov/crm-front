@@ -1,0 +1,21 @@
+.auth-form {
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: var(--pearl-gray);
+  padding: 20px;
+}
+
+.auth-form h1 {
+  margin-bottom: 15px;
+  font-size: var(--xl);
+}
+
+.auth-form h1 a {
+  color: var(--light-carbone);
+  border-bottom: 1px dashed var(--light-carbone);
+}
+
+.auth-form label {
+  font-size: var(--m);
+}

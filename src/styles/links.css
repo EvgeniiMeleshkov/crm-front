@@ -1,0 +1,7 @@
+a {
+  text-decoration: none;
+  color: var(--white);
+  background-color: transparent;
+  width: auto;
+  margin: 10px;
+}

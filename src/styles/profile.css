@@ -1,0 +1,20 @@
+.profile-style {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.profile-style p {
+  text-align: center;
+  color: var(--pearl-gray);
+  margin: 0;
+  padding: 0
+}
+
+.profile-style h2 {
+  text-align: center;
+  margin: 0;
+  padding: 0
+}
+

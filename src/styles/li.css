@@ -1,0 +1,9 @@
+
+li {
+  text-align-last: left;
+  margin-top: 5px;
+}
+li::marker {
+  color: var(--yellow);
+  height: 10px;
+}

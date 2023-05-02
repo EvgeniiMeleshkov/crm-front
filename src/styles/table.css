@@ -1,0 +1,13 @@
+table {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  background-color: var(--pearl-gray);
+}
+
+table label {
+  color: var(--orange);
+  font-size: large;
+  font-weight: 600;
+}

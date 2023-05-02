@@ -1,0 +1,46 @@
+:root {
+  /* Based on Rambler example */
+  /* Accents */
+  --red: #ff564e;
+  --green: #28bc00;
+  --yellow: #ffc000;  
+
+  /* Colors */
+  --white: #fff;
+  --purple-blue: #7989b5;
+  --dark-blue: #274bc8;
+  --rambler-blue: #315efb;
+  --alt-blue: #649dff;
+  --sky-blue: #9fdfff;
+  --orange: #FF6C6C;
+
+
+  --carbone: #343b4c;
+  --dark-carbone: #1f2431;
+  --light-carbone: #62687f;
+  --cloud-gray: #8d96b2;
+  --pearl-gray: #c6cad8;
+  --aluminium: #eef2f4;
+
+  /* Sizes */
+  --xxl: 2rem;
+  --xl: 1.5rem;
+  --l: 1rem;
+  --m: .9rem;
+  --s: .7rem;
+  --xs: .5rem;
+  /* -------------------------- */ 
+
+  --bg-prime-color: #0E1C2B;
+  --bg-second-color: #17212c;
+
+  --prime-text-color: #D5E9FF;
+  --second-text-color: #94A3B2;
+  
+  --accent-color: #60B26B;
+  
+  --shadow-color: #9caa9ebf;
+  
+  --errorPrimary: #910000;
+  --errorSecondary: #C5191C
+} 

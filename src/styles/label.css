@@ -1,0 +1,26 @@
+label {
+  display: block;
+  margin: 0 0 15px 0;
+}
+
+.editable-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.editable-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  padding: 5px;
+  background-color: var(--orange);
+  border-radius: 5px;
+  color: var(--aluminium);
+}
+
+.editable-label label {
+  margin: 0;
+}
