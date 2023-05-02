@@ -23,7 +23,7 @@ function Protected () {
       <Header />
       <Routes>
         <Route path='/profile' element={<Profile user={user} />} />
-        <Route path='/customers' element={<Customers/>} />
+        <Route path='/customers' element={<Customers />} />
       </Routes>
     </>
   )

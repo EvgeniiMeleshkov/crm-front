@@ -6,15 +6,14 @@ export default function Header () {
   return (
     <div className='header'>
       <div>
-      {localStorage.auth &&
-        <>
-          <NavLink to='/profile'>Профиль</NavLink>
-          <NavLink to='/customers'>Клиенты</NavLink>
-        </>
-      }  
+        {localStorage.auth &&
+          <>
+            <NavLink to='/profile'>Профиль</NavLink>
+            <NavLink to='/customers'>Клиенты</NavLink>
+          </>}
       </div>
       <div className='btn-group'>
-        
+
         {localStorage.auth && <Button onClick={clear} className='btn-header'>Выход</Button>}
       </div>
     </div>

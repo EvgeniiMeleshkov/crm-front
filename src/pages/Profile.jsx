@@ -8,7 +8,7 @@ export default function Profile (props) {
           <li><h3>{user.firstName} &nbsp; {user.lastName}</h3></li>
           <li><h3>{user.email}</h3></li>
         </ul>
-      </div> 
+      </div>
     </div>
   )
 }
