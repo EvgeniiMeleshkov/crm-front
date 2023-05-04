@@ -1,0 +1,25 @@
+.project-create-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.project-create-input label {
+  margin: 0px;
+  padding: 0px;
+  
+}
+
+.project-create-input input {
+  background-color: var(--pearl-gray);
+  padding-right: 50px;
+}
+
+.project-create-input button {
+  position: absolute;
+  background: none;
+  right: -5px;
+  top: 1px;
+  font-size: var(--xl);
+}

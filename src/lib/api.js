@@ -27,6 +27,7 @@ const postTextContentJson = postText(contentJson)
 const register = postTextContentJson('/auth/register')
 const login = postTextContentJson('/auth/login')
 const recovery = postTextContentJson('/auth/recovery')
+const projectCreate = postTextContentJson('/project/create')
 
 // GET
 const get = api('GET')
@@ -42,5 +43,6 @@ export default {
   register,
   login,
   me,
-  getCustomers
+  getCustomers,
+  projectCreate
 }

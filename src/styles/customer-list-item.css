@@ -1,0 +1,14 @@
+.customer-list-item {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+
+.customer-list-item button {
+  max-width: max-content;
+  padding: 10px;
+}

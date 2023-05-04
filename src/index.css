@@ -16,3 +16,5 @@
 @import '@/styles/container.css';
 @import '@/styles/ul.css';
 @import '@/styles/active-link.css';
+@import '@/styles/customer-list-item.css';
+@import '@/styles/project-create-input.css';

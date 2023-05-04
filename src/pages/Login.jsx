@@ -14,7 +14,7 @@ export default
         </h1>
         <Input type='text' name='email' label='Электронная почта' />
 
-        <Button className='btn-orange'>Войти</Button>
+        <Button className='btn-dark'>Войти</Button>
       </Form>
     </div>
   </div>
