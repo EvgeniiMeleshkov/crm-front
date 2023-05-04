@@ -12,7 +12,7 @@ export default function Customers () {
     API.getCustomers()
       .then(setCustomers)
       .catch(console.log)
-  }, [])
+  }, [edit])
 
   function editOn (num) {
     setEdit([...edit, num])
