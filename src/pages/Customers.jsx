@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import API from '@/lib/api.js'
 import Button from '@/components/Button'
-import Input from '@/components/Input'
-import parse from '@/lib/form2json'
 
 export default function Customers () {
   const [customers, setCustomers] = useState([])
@@ -29,7 +27,6 @@ export default function Customers () {
     setEdit(edit.filter(x => x !== idx))
   }
 
-  console.log(customers)
   return (
     <div className='profile-style'>
       <ul>
@@ -47,7 +44,11 @@ export default function Customers () {
                 : 
                   <div className='project-create-input'>
                     <form onSubmit={(evt)=>onSubmit(evt, x.email, idx)}>
-                      <input placeholder='Название проекта' name='projectName' type='text'/>
+                      <input onBlur={()=>setEdit(edit.filter(x => x !== idx))} 
+                             autoFocus='true' 
+                             placeholder='Название проекта' 
+                             name='projectName' 
+                             type='text'/>
                       <Button>💾</Button>
                     </form>
                   </div>
@@ -58,7 +59,17 @@ export default function Customers () {
                   <h4>{x.projects.length ? 'Проекты' : '' }</h4>
                   {x.projects.map((x, idx) => {
                     return (
-                      <li key={idx}>{x.name}</li>
+                      <li key={idx}>
+                        {x.name}
+                        <ul>
+                          <h4>{x.tickets.length ? 'Правки' : ''}</h4>
+                          {x.tickets.map((x, idx) => {
+                            return (
+                              <li key={idx}>{x.name}</li>
+                            )
+                          })}
+                        </ul>
+                      </li>
                     )
                   })}
                   

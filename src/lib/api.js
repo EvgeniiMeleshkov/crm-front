@@ -27,7 +27,10 @@ const postTextContentJson = postText(contentJson)
 const register = postTextContentJson('/auth/register')
 const login = postTextContentJson('/auth/login')
 const recovery = postTextContentJson('/auth/recovery')
+
 const projectCreate = postTextContentJson('/project/create')
+
+const ticketCreate = postTextContentJson('/ticket/create')
 
 // GET
 const get = api('GET')
@@ -35,6 +38,8 @@ const getJson = get('json')
 const getJsonContentJson = getJson(contentJson)
 
 const me = getJsonContentJson('/auth/me')
+
+const getProjects = getJsonContentJson('/project/read')
 
 const getCustomers = getJsonContentJson('/user/customers')
 
@@ -44,5 +49,7 @@ export default {
   login,
   me,
   getCustomers,
-  projectCreate
+  projectCreate,
+  getProjects,
+  ticketCreate
 }

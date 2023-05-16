@@ -20,7 +20,7 @@ export default
 
         <Input type='text' name='firstName' label='Имя' />
         <Input type='text' name='lastName' label='Фамилия' />
-        <Button className='btn-orange'>Зарегистрироваться</Button>
+        <Button className='btn-dark'>Зарегистрироваться</Button>
       </Form>
     </div>
   </div>
