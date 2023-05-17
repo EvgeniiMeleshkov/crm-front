@@ -5,13 +5,13 @@ export default function Message (props) {
 
   return (
     <div>
-      <div className='message-instance'>
+      <div className='user-message-instance'>
         <div style={{ alignSelf: 'end' }}>
           <img alt='' src={avatar} />
         </div>
         <div>
-          <div className='message-text'>
-            <div className='user-message'>
+          <div className='user-message-text'>
+            <div className='message'>
               {message}
             </div>
           </div>

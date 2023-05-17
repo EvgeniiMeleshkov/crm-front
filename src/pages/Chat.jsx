@@ -56,6 +56,14 @@ export default function Chat (props) {
 
   return (
     <div className='profile-style'>
+      <span>
+        <h2>{customer ? customer.firstName : user.firstName}</h2>
+        <h2>{customer ? customer.lastName : user.lastName}</h2>
+      </span>
+      
+      <h3>{ticket.name}</h3>
+      <hr/>
+      <h3>{ticket.description}</h3>
       <div className='chat-container'>
         <div className='chat-view'>
           {messagesForRender}
