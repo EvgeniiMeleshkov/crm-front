@@ -1,0 +1,42 @@
+.message-instance {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 5px 15px 5px 15px;
+}
+.message-instance img {
+  height: 50px;
+  align-items: flex-end;
+  border-radius: 50%;
+}
+.message-text {
+  font-size: large;
+  margin-left: 1rem;
+  position:relative;
+  background-color: #3e4750;
+  color: snow;
+  max-width: 400px;
+  border-radius: 10px 10px 10px 0;
+  z-index: 0;
+
+}
+.message-text:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -12px;
+  height: 17px;
+  width: 13px;
+  border-bottom-right-radius: 50%;
+  box-shadow: 5px 0 0 0 #3e4750;
+  overflow: hidden;
+}
+
+
+.user-message {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  overflow-wrap: anywhere;
+  text-align: center;
+}

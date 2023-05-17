@@ -1,0 +1,37 @@
+.send-message-btn {
+  color: #fff;
+  margin: 0.3rem;
+  min-width: 100px;
+  max-width: max-content;
+  appearance: none;
+  background-color: var(--carbone);
+  box-shadow: gray;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.send-message-btn:disabled {
+  pointer-events: none;
+  opacity: 80%;
+  background-color: darkgrey;
+}
+
+.send-message-btn:hover {
+  color: #fff;
+  background-color: var(--purple-blue);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.send-message-btn:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

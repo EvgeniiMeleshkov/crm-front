@@ -18,3 +18,8 @@
 @import '@/styles/active-link.css';
 @import '@/styles/customer-list-item.css';
 @import '@/styles/project-create-input.css';
+@import '@/styles/chat-container.css';
+@import '@/styles/chat-bottom.css';
+@import '@/styles/textarea.css';
+@import '@/styles/send-message-btn.css';
+@import '@/styles/message.css';

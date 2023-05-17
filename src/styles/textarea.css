@@ -1,0 +1,13 @@
+textarea {
+  width: 250px;
+  height: 35px;
+  border: none;
+  border-top: 2px solid var(--carbone);
+  resize: none;
+  line-height: 15px;
+  padding: 5px;
+  font-size: large;
+  background-color: transparent;
+  color: var(--dark-carbone);
+  outline: none;
+}

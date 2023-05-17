@@ -31,13 +31,16 @@ function Protected () {
       <Header />
       <Routes>
         <Route path='/profile' element={<Profile toChat={toChat} user={user} />} />
-        <Route path='/customers' element={<Customers toChat={toChat}/>} />
-        <Route path='/chat' 
+        <Route path='/customers' element={<Customers toChat={toChat} />} />
+        <Route
+          path='/chat'
           element={
-            <Chat customer={customer} 
-                  ticket={ticket} 
-                  user={user}/>
-          } 
+            <Chat
+              customer={customer}
+              ticket={ticket}
+              user={user}
+            />
+          }
         />
       </Routes>
     </>

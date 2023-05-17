@@ -44,46 +44,47 @@ export default function Customers (props) {
                   <li><h3>{customer.firstName} &nbsp; {customer.lastName}</h3></li>
                   <li><h3>{customer.email}</h3></li>
                 </div>
-                { !edit.includes(idx)
-                ? <Button onClick={()=>{editOn(idx)}} className='btn-dark'>Добавить проект</Button>
-                : 
-                  <div className='project-create-input'>
-                    <form onSubmit={(evt)=>onSubmit(evt, customer.email, idx)}>
-                      <input onBlur={()=>setEdit(edit.filter(x => x !== idx))} 
-                             autoFocus='true' 
-                             placeholder='Название проекта' 
-                             name='projectName' 
-                             type='text'/>
+                {!edit.includes(idx)
+                  ? <Button onClick={() => { editOn(idx) }} className='btn-dark'>Добавить проект</Button>
+                  : <div className='project-create-input'>
+                    <form onSubmit={(evt) => onSubmit(evt, customer.email, idx)}>
+                      <input
+                        onBlur={() => setEdit(edit.filter(x => x !== idx))}
+                        autoFocus='true'
+                        placeholder='Название проекта'
+                        name='projectName'
+                        type='text'
+                      />
                       <Button>💾</Button>
                     </form>
-                  </div>
-                }
+                  </div>}
               </div>
-              
+
               <ul>
-                  <h4>{customer.projects.length ? 'Проекты' : '' }</h4>
-                  {customer.projects.map((x, idx) => {
-                    return (
-                      <li key={idx}>
-                        {x.name}
-                        <ul>
-                          <h4>{x.tickets.length ? 'Правки' : ''}</h4>
-                          {x.tickets.map((x, idx) => {
-                            return (
-                              <li key={idx}
-                                  onClick={()=>props.toChat(customer, x)}
-                              >
-                                <NavLink to='/chat'>{x.name}</NavLink>
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      </li>
-                    )
-                  })}
-                  
+                <h4>{customer.projects.length ? 'Проекты' : ''}</h4>
+                {customer.projects.map((x, idx) => {
+                  return (
+                    <li key={idx}>
+                      {x.name}
+                      <ul>
+                        <h4>{x.tickets.length ? 'Правки' : ''}</h4>
+                        {x.tickets.map((x, idx) => {
+                          return (
+                            <li
+                              key={idx}
+                              onClick={() => props.toChat(customer, x)}
+                            >
+                              <NavLink to='/chat'>{x.name}</NavLink>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                    </li>
+                  )
+                })}
+
               </ul>
-              <hr/>
+              <hr />
             </div>
           )
         })
