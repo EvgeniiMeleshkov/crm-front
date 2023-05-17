@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import API from '@/lib/api.js'
 import Button from '@/components/Button'
+import { NavLink } from 'react-router-dom'
 
-export default function Customers () {
+export default function Customers (props) {
   const [customers, setCustomers] = useState([])
   const [edit, setEdit] = useState([])
 
@@ -27,23 +28,27 @@ export default function Customers () {
     setEdit(edit.filter(x => x !== idx))
   }
 
+  // function goToChat (customer, ticket) {
+  //   props.toChat(()=>({customer, ticket}))
+  // }
+
   return (
     <div className='profile-style'>
       <ul>
         {
-        customers.map((x, idx) => {
+        customers.map((customer, idx) => {
           return (
             <div key={idx}>
               <div className='customer-list-item'>
                 <div>
-                  <li><h3>{x.firstName} &nbsp; {x.lastName}</h3></li>
-                  <li><h3>{x.email}</h3></li>
+                  <li><h3>{customer.firstName} &nbsp; {customer.lastName}</h3></li>
+                  <li><h3>{customer.email}</h3></li>
                 </div>
                 { !edit.includes(idx)
                 ? <Button onClick={()=>{editOn(idx)}} className='btn-dark'>Добавить проект</Button>
                 : 
                   <div className='project-create-input'>
-                    <form onSubmit={(evt)=>onSubmit(evt, x.email, idx)}>
+                    <form onSubmit={(evt)=>onSubmit(evt, customer.email, idx)}>
                       <input onBlur={()=>setEdit(edit.filter(x => x !== idx))} 
                              autoFocus='true' 
                              placeholder='Название проекта' 
@@ -56,8 +61,8 @@ export default function Customers () {
               </div>
               
               <ul>
-                  <h4>{x.projects.length ? 'Проекты' : '' }</h4>
-                  {x.projects.map((x, idx) => {
+                  <h4>{customer.projects.length ? 'Проекты' : '' }</h4>
+                  {customer.projects.map((x, idx) => {
                     return (
                       <li key={idx}>
                         {x.name}
@@ -65,7 +70,11 @@ export default function Customers () {
                           <h4>{x.tickets.length ? 'Правки' : ''}</h4>
                           {x.tickets.map((x, idx) => {
                             return (
-                              <li key={idx}>{x.name}</li>
+                              <li key={idx}
+                                  onClick={()=>props.toChat(customer, x)}
+                              >
+                                <NavLink to='/chat'>{x.name}</NavLink>
+                              </li>
                             )
                           })}
                         </ul>

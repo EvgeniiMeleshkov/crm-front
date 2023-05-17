@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import API from '@/lib/api'
 import Button from '@/components/Button'
+import { NavLink } from "react-router-dom"
 
 export default function Profile (props) {
-  const { user } = props
+  const { user, toChat } = props
 
   const [projects, setProjects] = useState([])
   const [edit, setEdit] = useState([])
@@ -70,7 +71,9 @@ export default function Profile (props) {
                         {x.tickets.length && x.tickets.map((x, idx) => {
                           return (
                             <div key={idx}>
-                              <h5>{x.name}</h5>
+                              <NavLink to='/chat'>
+                                <h5 onClick={()=>toChat(null, x)}>{x.name}</h5>
+                              </NavLink>
                               <h6><li>{x.description}</li></h6>
                             </div>      
                           )

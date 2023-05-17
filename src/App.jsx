@@ -8,9 +8,12 @@ import Notification from '@/pages/Notification'
 import Customers from '@/pages/Customers'
 import API from '@/lib/api.js'
 import clear from '@/lib/clear.js'
+import Chat from './pages/Chat'
 
 function Protected () {
   const [user, setUser] = useState({})
+  const [customer, setCustomer] = useState({})
+  const [ticket, setTicket] = useState({})
 
   useEffect(() => {
     API.me()
@@ -18,12 +21,24 @@ function Protected () {
       .catch(clear)
   }, [])
 
+  function toChat (customer, ticket) {
+    setCustomer(customer)
+    setTicket(ticket)
+  }
+
   return (
     <>
       <Header />
       <Routes>
-        <Route path='/profile' element={<Profile user={user} />} />
-        <Route path='/customers' element={<Customers />} />
+        <Route path='/profile' element={<Profile toChat={toChat} user={user} />} />
+        <Route path='/customers' element={<Customers toChat={toChat}/>} />
+        <Route path='/chat' 
+          element={
+            <Chat customer={customer} 
+                  ticket={ticket} 
+                  user={user}/>
+          } 
+        />
       </Routes>
     </>
   )
