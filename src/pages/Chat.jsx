@@ -1,18 +1,28 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Message from '@/pages/Message.jsx'
+import api from '../lib/api'
 
 export default function Chat (props) {
+  
   const { user, customer, ticket } = props
   const scrollToRef = useRef(null)
 
   const [messages, setMessages] = useState([])
 
+  useEffect(()=> {
+    api.getMessages(JSON.stringify({ticketId: ticket._id}))
+    .then((res)=>{
+      setMessages(JSON.parse(res))
+    })
+    .catch(console.log)
+  }, [])
+
   const messagesForRender = messages.map((m, i) => {
     return (
       <Message
-        avatar={m.avatar}
+        avatar={'https://i.kym-cdn.com/photos/images/newsfeed/001/788/217/3b9.png'}
         key={i}
-        message={m.message}
+        message={m.text}
       />
     )
   })
@@ -21,10 +31,12 @@ export default function Chat (props) {
 
   const [value, setValue] = useState('')
 
+  const [disable, setDisable] = useState(false)
+
   // -----------------------------------------------------------------
 
   // при отправке сообщения контент скроллится вниз
-  const scrollToBottom = () => {
+  function scrollToBottom () {
     if (!scrollToRef.current) {
       return
     }
@@ -40,19 +52,33 @@ export default function Chat (props) {
     onSendMessage()
   }
 
-  const onSendMessage = () => {
+  const onSendMessage = async (e) => {
+    e.preventDefault()
+
+    setDisable(true)
+
+    const formData = new FormData(e.target)
+    const obj = Object.fromEntries(formData.entries())
+    const {text} = obj
+    const data = {
+      text,
+      customerId: customer._id,
+      ticketId: ticket._id,
+      isMy: true
+    }
+    
+    const json = await api.messageCreate(JSON.stringify(data))
+    const res = JSON.parse(json)
+    console.log(res)
     setMessages([
       ...messages,
-      {
-        avatar: 'https://i.kym-cdn.com/photos/images/newsfeed/001/788/217/3b9.png',
-        message: value
-      }
+      res
     ])
+
+    setDisable(false)
     setValue('')
     scrollToBottom()
   }
-
-  console.log(user, customer, ticket)
 
   return (
     <div className='profile-style'>
@@ -71,13 +97,13 @@ export default function Chat (props) {
         </div>
         <div className='chat-bottom'>
 
-          <textarea
-            onKeyUp={value.trim() !== '' ? onEnterPressed : undefined}
-            value={value} onChange={onTextChange}
-          />
-          {value.trim() !== ''
-            ? <button className='send-message-btn' onClick={onSendMessage}>send</button>
-            : <button className='send-message-btn' disabled>send</button>}
+          <form onSubmit={onSendMessage}>
+          <textarea value={value} onChange={onTextChange} id='text' name='text'/>
+        
+          <button disabled={disable} className='send-message-btn'>send</button>
+           
+          </form>
+          
         </div>
       </div>
     </div>

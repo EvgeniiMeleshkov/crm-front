@@ -1,0 +1,9 @@
+.close-proj {
+  position: absolute;
+  font-size: x-small;
+  right: -5px;
+  top: -1px;
+  margin: 0px;
+  padding: 0px;
+  z-index: 1;
+}

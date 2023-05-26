@@ -19,12 +19,14 @@ export default function Customers (props) {
 
   async function onSubmit (evt, email, idx) {
     evt.preventDefault()
+    
     const formData = new FormData(evt.target)
     const obj = Object.fromEntries(formData.entries())
     obj.email = email
-    console.log(obj)
+    
     const res = await API.projectCreate(JSON.stringify(obj))
     console.log(res)
+    
     setEdit(edit.filter(x => x !== idx))
   }
 
@@ -47,10 +49,17 @@ export default function Customers (props) {
                 {!edit.includes(idx)
                   ? <Button onClick={() => { editOn(idx) }} className='btn-dark'>Добавить проект</Button>
                   : <div className='project-create-input'>
-                    <form onSubmit={(evt) => onSubmit(evt, customer.email, idx)}>
+                    <label 
+                      onClick={() => setEdit(edit.filter(x => x !== idx))}
+                      className='close-proj'
+                      >
+                        ❌
+                    </label>
+                    <form onSubmit={(evt) => onSubmit(evt, customer.email, idx)}
+                          // onBlur={() => setEdit(edit.filter(x => x !== idx))}
+                    >
                       <input
-                        onBlur={() => setEdit(edit.filter(x => x !== idx))}
-                        autoFocus='true'
+                        autoFocus={true}
                         placeholder='Название проекта'
                         name='projectName'
                         type='text'

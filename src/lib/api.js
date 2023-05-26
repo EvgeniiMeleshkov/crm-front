@@ -32,6 +32,10 @@ const projectCreate = postTextContentJson('/project/create')
 
 const ticketCreate = postTextContentJson('/ticket/create')
 
+const messageCreate = postTextContentJson('/message/create')
+
+const getMessages = postTextContentJson('/message/read')
+
 // GET
 const get = api('GET')
 const getJson = get('json')
@@ -43,6 +47,7 @@ const getProjects = getJsonContentJson('/project/read')
 
 const getCustomers = getJsonContentJson('/user/customers')
 
+
 export default {
   recovery,
   register,
@@ -51,5 +56,7 @@ export default {
   getCustomers,
   projectCreate,
   getProjects,
-  ticketCreate
+  ticketCreate,
+  messageCreate,
+  getMessages
 }
