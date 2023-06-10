@@ -71,16 +71,15 @@ export default function Profile (props) {
                     </div>
                     <div>
                       <ul>
-                        {x.tickets.length && x.tickets.map((x, idx) => {
+                        {x.tickets.length ? x.tickets.map((x, idx) => {
                           return (
-                            <div key={idx}>
-                              <NavLink to='/chat'>
-                                <h5 onClick={() => toChat(null, x)}>{x.name}</h5>
+                            <li key={idx}>
+                              <NavLink to='/chat' onClick={() => toChat(null, x)}>{x.name}
                               </NavLink>
-                              <h6><li>{x.description}</li></h6>
-                            </div>
+                              <h5>{x.description}</h5>
+                            </li>
                           )
-                        })}
+                        }) : ''}
                       </ul>
                     </div>
                   </div>

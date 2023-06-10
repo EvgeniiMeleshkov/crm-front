@@ -3,8 +3,18 @@ import Message from '@/pages/Message.jsx'
 import api from '../lib/api'
 
 export default function Chat (props) {
-  
+
   const { user, customer, ticket } = props
+
+  function layout (customer, message) {
+    if(customer) {
+      return message.isMy ? 'user-' : ''
+    }
+    if(!customer) {
+      return !message.isMy ? 'user-' : ''
+    }
+  }
+
   const scrollToRef = useRef(null)
 
   const [messages, setMessages] = useState([])
@@ -15,11 +25,18 @@ export default function Chat (props) {
       setMessages(JSON.parse(res))
     })
     .catch(console.log)
+    
   }, [])
 
+  useEffect(()=>{
+    scrollToBottom()
+  }, [messages])
+
   const messagesForRender = messages.map((m, i) => {
+    console.log(m)
     return (
       <Message
+        className={layout(customer, m)}
         avatar={'https://i.kym-cdn.com/photos/images/newsfeed/001/788/217/3b9.png'}
         key={i}
         message={m.text}
@@ -40,17 +57,20 @@ export default function Chat (props) {
     if (!scrollToRef.current) {
       return
     }
-    scrollToRef.current.scrollIntoView(false)
+    console.log('dfadfadf')
+   
+    scrollToRef.current.scrollTo(0, scrollToRef.current.scrollHeight)
+    return
   }
 
   const onTextChange = (e) => {
     setValue(e.currentTarget.value)
   }
 
-  const onEnterPressed = (e) => {
-    if (e.key !== 'Enter') return
-    onSendMessage()
-  }
+  // const onEnterPressed = (e) => {
+  //   if (e.key !== 'Enter') return
+  //   onSendMessage()
+  // }
 
   const onSendMessage = async (e) => {
     e.preventDefault()
@@ -62,9 +82,9 @@ export default function Chat (props) {
     const {text} = obj
     const data = {
       text,
-      customerId: customer._id,
+      customerId: customer ? customer._id : user._id,
       ticketId: ticket._id,
-      isMy: true
+      isMy: !!customer
     }
     
     const json = await api.messageCreate(JSON.stringify(data))
@@ -79,7 +99,7 @@ export default function Chat (props) {
     setValue('')
     scrollToBottom()
   }
-
+  
   return (
     <div className='profile-style'>
       <span>
@@ -91,9 +111,9 @@ export default function Chat (props) {
       <hr/>
       <h3>{ticket.description}</h3>
       <div className='chat-container'>
-        <div className='chat-view'>
+        <div ref={scrollToRef} className='chat-view'>
           {messagesForRender}
-          <div style={{ marginTop: '70px' }} ref={scrollToRef} />
+          {/* <div className='scroll' style={{ marginTop: '70px' }} ref={scrollToRef} /> */}
         </div>
         <div className='chat-bottom'>
 

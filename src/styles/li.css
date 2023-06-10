@@ -7,3 +7,12 @@ li::marker {
   color: var(--yellow);
   height: 10px;
 }
+
+li a {
+  text-decoration: none;
+  color: var(--dark-carbon);
+  font-weight: 200;
+  background-color: transparent;
+  width: auto;
+  margin: 10px;
+}
